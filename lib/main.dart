@@ -27,12 +27,14 @@ class HomeScreen extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/fondo_pantalla_principal_2.jpg"),
+            colorFilter: ColorFilter.mode(Colors.white38, BlendMode.luminosity),
+            image:
+                NetworkImage("https://api.lorem.space/image/book?w=150&h=220"),
             fit: BoxFit.cover,
           ),
         ),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
