@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:app_de_libros/register.dart';
 import 'package:flutter/material.dart';
 import 'package:app_de_libros/login.dart';
@@ -29,77 +31,80 @@ class HomeScreen extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const Text(
-              "Librolandia",
-              style: TextStyle(
-                fontSize: 50,
-                color: Colors.black,
-                fontFamily: 'Garamond',
-                shadows: <Shadow>[
-                  Shadow(
-                    offset: Offset(0, 2),
-                    blurRadius: 5.0,
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return const MyLogin();
-                    },
-                  ),
-                );
-              },
-              style: ButtonStyle(
-                elevation: const MaterialStatePropertyAll(7),
-                fixedSize: const MaterialStatePropertyAll(Size(150, 50)),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                ),
-              ),
-              child: const Text(
-                "Ingresar",
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Text(
+                "Librolandia",
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 50,
+                  color: Colors.black,
+                  fontFamily: 'Garamond',
+                  shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 5.0,
+                      color: Colors.grey,
+                    ),
+                  ],
                 ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return const MyRegister();
-                    },
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const MyLogin();
+                      },
+                    ),
+                  );
+                },
+                style: ButtonStyle(
+                  elevation: const MaterialStatePropertyAll(7),
+                  fixedSize: const MaterialStatePropertyAll(Size(180, 50)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
                   ),
-                );
-              },
-              style: ButtonStyle(
-                elevation: const MaterialStatePropertyAll(7),
-                fixedSize: const MaterialStatePropertyAll(Size(180, 50)),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                ),
+                child: const Text(
+                  "Ingresar",
+                  style: TextStyle(
+                    fontSize: 25,
                   ),
                 ),
               ),
-              child: const Text(
-                "Registrarse",
-                style: TextStyle(
-                  fontSize: 25,
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const MyRegister();
+                      },
+                    ),
+                  );
+                },
+                style: ButtonStyle(
+                  elevation: const MaterialStatePropertyAll(7),
+                  fixedSize: const MaterialStatePropertyAll(Size(180, 50)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  "Registrarse",
+                  style: TextStyle(
+                    fontSize: 25,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
