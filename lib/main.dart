@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:app_de_libros/register.dart';
 import 'package:flutter/material.dart';
 import 'package:app_de_libros/login.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,34 +26,13 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            colorFilter: ColorFilter.mode(Colors.white38, BlendMode.luminosity),
-            image:
-                NetworkImage("https://api.lorem.space/image/book?w=150&h=220"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: const BoxDecoration(color: Colors.white),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+          filter: ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Text(
-                "Librolandia",
-                style: TextStyle(
-                  fontSize: 50,
-                  color: Colors.black,
-                  fontFamily: 'Garamond',
-                  shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0, 2),
-                      blurRadius: 5.0,
-                      color: Colors.grey,
-                    ),
-                  ],
-                ),
-              ),
+              Image.asset('images/librolandia.png'),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
@@ -64,6 +44,8 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
                 style: ButtonStyle(
+                  backgroundColor: const MaterialStatePropertyAll(
+                      Color.fromARGB(255, 43, 64, 64)),
                   elevation: const MaterialStatePropertyAll(7),
                   fixedSize: const MaterialStatePropertyAll(Size(180, 50)),
                   shape: MaterialStateProperty.all(
@@ -90,6 +72,8 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
                 style: ButtonStyle(
+                  backgroundColor: const MaterialStatePropertyAll(
+                      Color.fromARGB(255, 43, 64, 64)),
                   elevation: const MaterialStatePropertyAll(7),
                   fixedSize: const MaterialStatePropertyAll(Size(180, 50)),
                   shape: MaterialStateProperty.all(
