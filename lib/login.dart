@@ -26,7 +26,6 @@ class _MyLoginState extends State<MyLogin> {
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 33,
-                fontFamily: 'Garamond',
               ),
             ),
             TextField(
@@ -63,27 +62,30 @@ class _MyLoginState extends State<MyLogin> {
                   )),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Text(
-                  'Iniciar sesión',
-                  style: TextStyle(fontSize: 27, fontWeight: FontWeight.w700),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MyRegister()));
+                  },
+                  style: const ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(
+                      Color.fromARGB(255, 43, 64, 64),
+                    ),
+                    padding: MaterialStatePropertyAll(
+                      EdgeInsets.all(15),
+                    ),
+                  ),
+                  child: const Text(
+                    'Iniciar sesión',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: const Color.fromARGB(255, 43, 64, 64),
-                  child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MyRegister()));
-                      },
-                      icon: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                      )),
-                )
               ],
             ),
             Row(
@@ -110,15 +112,16 @@ class _MyLoginState extends State<MyLogin> {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      '¿Olvidaste tu contraseña?',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Color(0xff4c505b),
-                        fontSize: 18,
-                      ),
-                    )),
+                  onPressed: () {},
+                  child: const Text(
+                    '¿Olvidaste tu contraseña?',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Color(0xff4c505b),
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
               ],
             ),
           ],

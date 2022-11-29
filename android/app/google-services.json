@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "945767379231",
+    "project_id": "librolandia-51a7b",
+    "storage_bucket": "librolandia-51a7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945767379231:android:bafb5e3753082dfb8c002a",
+        "android_client_info": {
+          "package_name": "com.example.app_de_libros"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945767379231-f7l40vpuun79gugp98feri6r5r8cj6an.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR1BEWTdmQ8UqsXsrHzDyg5hFcDGQuCH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945767379231-f7l40vpuun79gugp98feri6r5r8cj6an.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

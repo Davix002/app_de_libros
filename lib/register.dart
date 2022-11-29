@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:app_de_libros/login.dart';
 
@@ -9,6 +10,30 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  TextEditingController nombres = TextEditingController();
+  TextEditingController apellidos = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController telefono = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  final firebase = FirebaseFirestore.instance;
+
+  registroUsuario() async {
+    try {
+      await firebase.collection('Usuarios').doc().set(
+        {
+          'Nombres': nombres.text,
+          'Apellidos': apellidos.text,
+          'Email': email.text,
+          'Telefono': telefono.text,
+          'Password': password.text,
+        },
+      );
+    } catch (e) {
+      debugPrint('Error: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,19 +50,13 @@ class _MyRegisterState extends State<MyRegister> {
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 33,
-                  fontFamily: 'Garamond',
                 ),
               ),
             ),
             TextField(
+              controller: nombres,
               style: const TextStyle(color: Colors.grey),
               decoration: InputDecoration(
-                  /* enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Colors.white,
-                    ),
-                  ), */
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
@@ -46,21 +65,34 @@ class _MyRegisterState extends State<MyRegister> {
                   ),
                   fillColor: Colors.grey.shade50,
                   filled: true,
-                  hintText: "Nombre",
+                  hintText: "Nombres",
                   hintStyle: const TextStyle(color: Colors.grey),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   )),
             ),
             TextField(
+              controller: apellidos,
               style: const TextStyle(color: Colors.grey),
               decoration: InputDecoration(
-                  /* enabledBorder: OutlineInputBorder(
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
-                      color: Colors.white,
+                      color: Colors.grey,
                     ),
-                  ), */
+                  ),
+                  fillColor: Colors.grey.shade50,
+                  filled: true,
+                  hintText: "Apellidos",
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  )),
+            ),
+            TextField(
+              controller: email,
+              style: const TextStyle(color: Colors.grey),
+              decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
@@ -76,14 +108,9 @@ class _MyRegisterState extends State<MyRegister> {
                   )),
             ),
             TextField(
+              controller: telefono,
               style: const TextStyle(color: Colors.grey),
               decoration: InputDecoration(
-                  /* enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Colors.white,
-                    ),
-                  ), */
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
@@ -99,15 +126,10 @@ class _MyRegisterState extends State<MyRegister> {
                   )),
             ),
             TextField(
+              controller: password,
               style: const TextStyle(color: Colors.grey),
               obscureText: true,
               decoration: InputDecoration(
-                  /* enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Colors.white,
-                    ),
-                  ), */
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
@@ -123,27 +145,28 @@ class _MyRegisterState extends State<MyRegister> {
                   )),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Text(
-                  'Registrarse',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 27,
-                      fontWeight: FontWeight.w700),
+                ElevatedButton(
+                  onPressed: () {
+                    //Navigator.pushNamed(context, 'login');
+                    registroUsuario();
+                  },
+                  style: const ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(
+                      Color.fromARGB(255, 43, 64, 64),
+                    ),
+                    padding: MaterialStatePropertyAll(
+                      EdgeInsets.all(15),
+                    ),
+                  ),
+                  child: const Text(
+                    'Registrarse',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: const Color.fromARGB(255, 43, 64, 64),
-                  child: IconButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'login');
-                      },
-                      icon: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                      )),
-                )
               ],
             ),
             Row(
