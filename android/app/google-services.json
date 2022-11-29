@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "945767379231",
-    "project_id": "librolandia-51a7b",
-    "storage_bucket": "librolandia-51a7b.appspot.com"
+    "project_number": "414000535462",
+    "project_id": "librolandia-11103",
+    "storage_bucket": "librolandia-11103.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:945767379231:android:bafb5e3753082dfb8c002a",
+        "mobilesdk_app_id": "1:414000535462:android:e978f12d0e0d081b8d6167",
         "android_client_info": {
           "package_name": "com.example.app_de_libros"
         }
       },
       "oauth_client": [
         {
-          "client_id": "945767379231-f7l40vpuun79gugp98feri6r5r8cj6an.apps.googleusercontent.com",
+          "client_id": "414000535462-a5onnnn2d9vt3lsr0e4avpkv1ulii3hr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDR1BEWTdmQ8UqsXsrHzDyg5hFcDGQuCH0"
+          "current_key": "AIzaSyAjNauePb7YVEYt_JVJoX08AQYOI0c7zY4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "945767379231-f7l40vpuun79gugp98feri6r5r8cj6an.apps.googleusercontent.com",
+              "client_id": "414000535462-a5onnnn2d9vt3lsr0e4avpkv1ulii3hr.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "414000535462-2it4faa6pjdrv52jgul4knpaulgd5qae.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.appDeLibros"
+              }
             }
           ]
         }

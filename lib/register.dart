@@ -18,7 +18,8 @@ class _MyRegisterState extends State<MyRegister> {
 
   final firebase = FirebaseFirestore.instance;
 
-  registroUsuario() async {
+  Future<bool> registroUsuario() async {
+    bool res = false;
     try {
       await firebase.collection('Usuarios').doc().set(
         {
@@ -29,9 +30,11 @@ class _MyRegisterState extends State<MyRegister> {
           'Password': password.text,
         },
       );
+      res = true;
     } catch (e) {
       debugPrint('Error: $e');
     }
+    return res;
   }
 
   @override
@@ -55,25 +58,24 @@ class _MyRegisterState extends State<MyRegister> {
             ),
             TextField(
               controller: nombres,
-              style: const TextStyle(color: Colors.grey),
               decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Colors.grey,
-                    ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
                   ),
-                  fillColor: Colors.grey.shade50,
-                  filled: true,
-                  hintText: "Nombres",
-                  hintStyle: const TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  )),
+                ),
+                fillColor: Colors.grey.shade50,
+                filled: true,
+                hintText: "Nombres",
+                hintStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
             ),
             TextField(
               controller: apellidos,
-              style: const TextStyle(color: Colors.grey),
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -91,7 +93,6 @@ class _MyRegisterState extends State<MyRegister> {
             ),
             TextField(
               controller: email,
-              style: const TextStyle(color: Colors.grey),
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -109,7 +110,6 @@ class _MyRegisterState extends State<MyRegister> {
             ),
             TextField(
               controller: telefono,
-              style: const TextStyle(color: Colors.grey),
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -127,7 +127,6 @@ class _MyRegisterState extends State<MyRegister> {
             ),
             TextField(
               controller: password,
-              style: const TextStyle(color: Colors.grey),
               obscureText: true,
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -148,9 +147,22 @@ class _MyRegisterState extends State<MyRegister> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    //Navigator.pushNamed(context, 'login');
-                    registroUsuario();
+                  onPressed: () async {
+                    if (await registroUsuario()) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Usuario registrado con exito"),
+                          behavior: SnackBarBehavior.floating,
+                        ),
+                      );
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const MyLogin();
+                          },
+                        ),
+                      );
+                    }
                   },
                   style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(
