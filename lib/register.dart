@@ -161,28 +161,45 @@ class _MyRegisterState extends State<MyRegister> {
               controller: password,
               obscureText: true,
               decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Colors.grey,
-                    ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
                   ),
-                  fillColor: Colors.grey.shade50,
-                  filled: true,
-                  hintText: "Contraseña",
-                  hintStyle: const TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  )),
+                ),
+                fillColor: Colors.grey.shade50,
+                filled: true,
+                hintText: "Contraseña",
+                hintStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onSubmitted: (value) async {
+                if (nombres.text.isNotEmpty &&
+                    apellidos.text.isNotEmpty &&
+                    email.text.isNotEmpty &&
+                    password.text.isNotEmpty) {
+                  if (await registroUsuario()) {
+                    notifica("Usuario registrado con exito", Colors.green);
+                    entrarPagina(const MyLogin());
+                  }
+                }
+              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    if (await registroUsuario()) {
-                      notifica("Usuario registrado con exito", Colors.green);
-                      entrarPagina(const MyLogin());
+                    if (nombres.text.isNotEmpty &&
+                        apellidos.text.isNotEmpty &&
+                        email.text.isNotEmpty &&
+                        password.text.isNotEmpty) {
+                      if (await registroUsuario()) {
+                        notifica("Usuario registrado con exito", Colors.green);
+                        entrarPagina(const MyLogin());
+                      }
                     }
                   },
                   style: const ButtonStyle(

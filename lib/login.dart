@@ -108,19 +108,27 @@ class _MyLoginState extends State<MyLogin> {
               controller: pass,
               style: const TextStyle(),
               obscureText: true,
+              onSubmitted: (value) async {
+                if (await validarDatos()) {
+                  entrarPagina(const Catalogo());
+                } else {
+                  notifica("Email o contraseña incorrectos", Colors.red);
+                }
+              },
               decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Colors.grey,
-                    ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
                   ),
-                  fillColor: Colors.grey.shade50,
-                  filled: true,
-                  hintText: "Contraseña",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  )),
+                ),
+                fillColor: Colors.grey.shade50,
+                filled: true,
+                hintText: "Contraseña",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
