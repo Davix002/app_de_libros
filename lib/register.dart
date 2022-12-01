@@ -50,6 +50,11 @@ class _MyRegisterState extends State<MyRegister> {
         },
       );
       res = true;
+      nombres.clear();
+      apellidos.clear();
+      email.clear();
+      telefono.clear();
+      password.clear();
     } catch (e) {
       debugPrint('Error: $e');
     }

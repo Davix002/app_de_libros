@@ -25,6 +25,8 @@ class _MyLoginState extends State<MyLogin> {
           if (doc.get("Email") == email.text &&
               doc.get("Password") == pass.text) {
             res = true;
+            email.clear();
+            pass.clear();
           }
         }
       } else {
