@@ -2,6 +2,7 @@ import 'package:app_de_libros/register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:app_de_libros/login.dart';
+import 'package:material_color_generator/material_color_generator.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -17,8 +18,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: generateMaterialColor(color: const Color(0xFF253638)),
+      ),
+      home: const HomeScreen(),
     );
   }
 }
@@ -47,8 +51,6 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               style: ButtonStyle(
-                backgroundColor: const MaterialStatePropertyAll(
-                    Color.fromARGB(255, 43, 64, 64)),
                 elevation: const MaterialStatePropertyAll(7),
                 padding: const MaterialStatePropertyAll(
                   EdgeInsets.all(15),
@@ -77,8 +79,6 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               style: ButtonStyle(
-                backgroundColor: const MaterialStatePropertyAll(
-                    Color.fromARGB(255, 43, 64, 64)),
                 elevation: const MaterialStatePropertyAll(7),
                 padding: const MaterialStatePropertyAll(
                   EdgeInsets.all(15),

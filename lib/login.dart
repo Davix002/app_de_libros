@@ -1,3 +1,4 @@
+import 'package:app_de_libros/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:app_de_libros/register.dart';
 
@@ -82,12 +83,9 @@ class _MyLoginState extends State<MyLogin> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const MyRegister()));
+                            builder: (context) => const Catalogo()));
                   },
                   style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                      Color.fromARGB(255, 43, 64, 64),
-                    ),
                     padding: MaterialStatePropertyAll(
                       EdgeInsets.all(15),
                     ),

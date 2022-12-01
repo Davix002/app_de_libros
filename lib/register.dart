@@ -178,9 +178,6 @@ class _MyRegisterState extends State<MyRegister> {
                     }
                   },
                   style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                      Color.fromARGB(255, 43, 64, 64),
-                    ),
                     padding: MaterialStatePropertyAll(
                       EdgeInsets.all(15),
                     ),
