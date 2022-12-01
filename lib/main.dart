@@ -51,7 +51,6 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               style: ButtonStyle(
-                elevation: const MaterialStatePropertyAll(7),
                 padding: const MaterialStatePropertyAll(
                   EdgeInsets.all(15),
                 ),
@@ -79,7 +78,6 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               style: ButtonStyle(
-                elevation: const MaterialStatePropertyAll(7),
                 padding: const MaterialStatePropertyAll(
                   EdgeInsets.all(15),
                 ),

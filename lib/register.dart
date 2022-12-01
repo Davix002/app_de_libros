@@ -10,6 +10,25 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  notifica(String mensaje, Color color) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(mensaje),
+        backgroundColor: color,
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
+  entrarPagina(StatefulWidget destino) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => destino,
+      ),
+    );
+  }
+
   TextEditingController nombres = TextEditingController();
   TextEditingController apellidos = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -162,19 +181,8 @@ class _MyRegisterState extends State<MyRegister> {
                 ElevatedButton(
                   onPressed: () async {
                     if (await registroUsuario()) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Usuario registrado con exito"),
-                          behavior: SnackBarBehavior.floating,
-                        ),
-                      );
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const MyLogin();
-                          },
-                        ),
-                      );
+                      notifica("Usuario registrado con exito", Colors.green);
+                      entrarPagina(const MyLogin());
                     }
                   },
                   style: const ButtonStyle(
