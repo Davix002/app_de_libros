@@ -184,6 +184,8 @@ class _MyRegisterState extends State<MyRegister> {
                     notifica("Usuario registrado con exito", Colors.green);
                     entrarPagina(const MyLogin());
                   }
+                } else {
+                  notifica("Llene los espacios requeridos", Colors.red);
                 }
               },
             ),
@@ -200,6 +202,8 @@ class _MyRegisterState extends State<MyRegister> {
                         notifica("Usuario registrado con exito", Colors.green);
                         entrarPagina(const MyLogin());
                       }
+                    } else {
+                      notifica("Llene los espacios requeridos", Colors.red);
                     }
                   },
                   style: const ButtonStyle(
